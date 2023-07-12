@@ -20,25 +20,7 @@ export class CatalogueServiceService {
     );
   };
 
-  // addItemsCart(id:number){
-  //   console.log(this.cartItems);
-  //   const cartItem = this.products.filter((p:any)=>{
-  //     if (p.id==id && p.quantity>0) {
-  //       return p;    
-  //     }
-  //   })[0];
-  //   this.cartItems .map((item:any)=>{
-  //     if(item.id==id && item.quantity<cartItem.quantity){
-  //       this.cartItems.push(cartItem); 
-  //     }else{
-  //       //give error
-  //     }
-  //   });
-  //   console.log(this.cartItems);
-  // };
-
   addItemsCart(id: number) {
-    console.log(this.cartItems);
     const cartItem = this.products.find((p: any) => p.id === id && p.quantity > 0);
   
     if (cartItem) {
@@ -63,4 +45,20 @@ export class CatalogueServiceService {
   getCartItems(){
     return this.cartItems;
   };
+
+  removeFromCart(id:number){
+    this.cartItems = this.cartItems.filter((item:any)=>{
+      if (item.id!==id) {
+        return true;
+      }
+      return false;
+    });
+  };
+
+  removeOneItem(id:number){
+  };
+
+  addOneItem(id:number){
+  };
+
 }

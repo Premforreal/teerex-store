@@ -1,4 +1,5 @@
 import {  Component, Input, Output, EventEmitter } from '@angular/core';
+import { CatalogueServiceService } from '../../services/catalogue-service.service';
 
 @Component({
   selector: 'app-cart-item',
@@ -8,7 +9,15 @@ import {  Component, Input, Output, EventEmitter } from '@angular/core';
 export class CartItemComponent {
   @Input() product:any;
 
-  removeFromCart(){
-    
-  }
+  constructor(private service:CatalogueServiceService) {};
+
+  removeFromCart(id:number){
+    this.service.removeFromCart(id);
+  };
+  removeOneItem(id:number){
+    this.service.removeOneItem(id);
+  };
+  addOneItem(id:number){
+    this.service.addOneItem(id);
+  };
 }

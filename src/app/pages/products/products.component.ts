@@ -23,8 +23,9 @@ export class ProductsComponent {
     );
   };
 
-  addToCart(itemId: number) {
-    this.service.addItemsCart(itemId);
+  addToCart(id: number) {
+    this.service.addItemsCart(id);
     // const itemToBeAdded = this.catalogue.filter((item:any)=>item.id==itemId)[0];
   };
+
 }
