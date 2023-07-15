@@ -11,6 +11,7 @@ export class CatalogueServiceService {
   api : string = 'https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/catalogue.json';
   cartItems:any = [];
   products:any;
+  filteredData:any;
   
   fetchData(){
     return this.http.get<any>(this.api).pipe(
@@ -39,7 +40,6 @@ export class CatalogueServiceService {
     else {
       console.error('Invalid item');
     }
-    console.log(this.cartItems);
   };
 
   getCartItems(){
@@ -56,9 +56,39 @@ export class CatalogueServiceService {
   };
 
   removeOneItem(id:number){
+    this.cartItems = this.cartItems.map((item:any)=>{
+      if (item.id==id && item.quantity>0) {
+          item.quantity--; 
+        }else{
+          console.error('error');
+        }
+      return item;
+    });
   };
 
   addOneItem(id:number){
+    const cartItem = this.products.find((p: any) => p.id === id);
+    this.cartItems = this.cartItems.map((item:any)=>{
+      if (item.id==id && item.quantity<cartItem.quantity) {
+          item.quantity++; 
+        }else{
+          console.error('error');
+        }
+      return item;
+    });
   };
+
+  searchItems(searchItem:string){
+    console.log(searchItem);
+    console.log(this.products);
+    this.products = [...
+    this.products.filter((item:any)=>{
+      if (item.id==parseInt(searchItem)) {
+        return true
+      }
+      return false;
+    })];
+    console.log(this.products);
+  }
 
 }

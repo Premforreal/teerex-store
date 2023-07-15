@@ -15,6 +15,9 @@ export class CartItemComponent {
     this.service.removeFromCart(id);
   };
   removeOneItem(id:number){
+    if(this.product.quantity==1){
+      this.service.removeFromCart(id);
+    }
     this.service.removeOneItem(id);
   };
   addOneItem(id:number){
