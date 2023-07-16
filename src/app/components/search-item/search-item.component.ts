@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CatalogueServiceService } from '../../services/catalogue-service.service';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search-item',
@@ -9,10 +10,18 @@ import { CatalogueServiceService } from '../../services/catalogue-service.servic
 export class SearchItemComponent {
   searchItem: string = '';
   
-  constructor(private service:CatalogueServiceService) {};
+  constructor(
+    private catalogueService:CatalogueServiceService,
+    private searchService:SearchService
+    ) {};
+
+  // search(){
+  //   this.catalogueService.searchItems(this.searchItem);
+  //   this.searchItem='';
+  // };
 
   search(){
-    this.service.searchItems(this.searchItem);
+    this.searchService.searchItems(this.searchItem);
     this.searchItem='';
   };
 }
