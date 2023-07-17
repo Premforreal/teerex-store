@@ -5,21 +5,27 @@ import { Injectable } from '@angular/core';
 })
 export class SearchService {
   
-  products:any;
-  filteredData:any;
-
   constructor() { }
 
-  searchItems(searchItem:string){
+  searchItems(searchItem:string, products:any){
+//  name 
+//  colour 
+//  type
+// green polo
     console.log(searchItem);
-    console.log(this.products);
-    this.filteredData = this.products.filter((item:any)=>{
-      if (item.id==parseInt(searchItem)) {
+    console.log(products);
+    products = products.filter((item:any)=>{
+      // return (item.color.toLowerCase() == searchItem.toLowerCase());
+      if (
+        item.name.toLowerCase().includes(searchItem.toLowerCase()) ||
+        item.color.toLowerCase().includes(searchItem.toLowerCase())
+      ) {
         return true;
       }
       return false;
     });
-    console.log(this.filteredData);
+    console.log(products);
+    return products;
   };
 
 }

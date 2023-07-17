@@ -12,16 +12,16 @@ export class SearchItemComponent {
   
   constructor(
     private catalogueService:CatalogueServiceService,
-    private searchService:SearchService
+    private searchService:SearchService,
     ) {};
 
-  // search(){
-  //   this.catalogueService.searchItems(this.searchItem);
-  //   this.searchItem='';
-  // };
-
   search(){
-    this.searchService.searchItems(this.searchItem);
+    this.catalogueService.searchItems(this.searchItem);
     this.searchItem='';
   };
+
+  // search(){
+  //   this.searchService.searchItems(this.searchItem);
+  //   this.searchItem='';
+  // };
 }
