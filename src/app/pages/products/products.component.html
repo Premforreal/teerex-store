@@ -4,11 +4,12 @@
 <div *ngFor="let key of filterKeys">
     <h2>{{key}}</h2>
     <div *ngFor="let item of filterAttributes[key]">
-        <input type="checkbox" id={{item}} name={{item}} value="{{item}}">
+        <input type="checkbox" id={{item}} name={{key}} value="{{item}}"
+        (change)="filterService.onCheckboxChange($event)">
         <label for={{item}}>{{item}}</label>
     </div>
 </div>
-<button >Filter!</button>
+<button (click)="applyFilters()">Apply filters</button>
 
 <div class="products">
     <div *ngFor="let product of catalogue">

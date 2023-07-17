@@ -18,6 +18,13 @@ export class FilterService {
     type:this.type
   };
 
+  filterValues:any = {
+    gender : new Set<string>(), 
+    color : new Set<string>(),
+    price: new Set<number>(),
+    type: new Set<string>()
+  };
+
   constructor(
     private catalogueService :CatalogueServiceService,
   ) {}
@@ -29,13 +36,21 @@ export class FilterService {
       this.filterAttributes.price.add(p.price);
       this.filterAttributes.type.add(p.type);
     });
-    this.filterAttributes = {
-      gender: [...this.gender],
-      color: [...this.color],
-      price: [...this.price],
-      type: [...this.type]
-    };
+    // this.filterAttributes = {
+    //   gender: [...this.gender],
+    //   color: [...this.color],
+    //   price: [...this.price],
+    //   type: [...this.type]
+    // };
     return this.filterAttributes;
-  }
+  };
+
+  onCheckboxChange(event:any){
+    const key = event.target.name;
+    event.target.checked
+      ? this.filterValues[key].add(event.target.value)
+      : this.filterValues[key].delete(event.target.value);
+      console.log(this.filterValues);
+  };
 
 }

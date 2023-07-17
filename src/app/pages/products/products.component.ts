@@ -17,7 +17,7 @@ export class ProductsComponent {
   constructor(
     private catalogueService:CatalogueServiceService,
     private searchService: SearchService,
-    private filterService: FilterService
+    public filterService: FilterService
     ) {};
 
   ngOnInit() {
@@ -45,4 +45,8 @@ export class ProductsComponent {
     this.catalogue = this.searchService.searchItems(this.searchItem, this.catalogueService.products);
   };
 
+  applyFilters(){
+    console.log(this.filterService.filterValues);
+    console.log(this.filterService.filterAttributes);
+  };
 }
