@@ -55,7 +55,7 @@ export class CatalogueServiceService {
       if (item.id==id && item.quantity>0) {
           item.quantity--; 
         }else{
-          console.error('error');
+          console.error('error removing item!');
         }
       return item;
     });
@@ -70,15 +70,6 @@ export class CatalogueServiceService {
           console.error('error');
         }
       return item;
-    });
-  };
-
-  searchItems(searchItem:string){
-    this.filteredData = this.products.filter((item:any)=>{
-      if (item.id==parseInt(searchItem)) {
-        return true;
-      }
-      return false;
     });
   };
 

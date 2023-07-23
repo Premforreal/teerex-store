@@ -8,14 +8,7 @@ export class SearchService {
   constructor() { }
 
   searchItems(searchItem:string, products:any){
-//  name 
-//  colour 
-//  type
-// green polo
-    console.log(searchItem);
-    console.log(products);
     products = products.filter((item:any)=>{
-      // return (item.color.toLowerCase() == searchItem.toLowerCase());
       if (
         item.name.toLowerCase().includes(searchItem.toLowerCase()) ||
         item.color.toLowerCase().includes(searchItem.toLowerCase())
@@ -24,7 +17,6 @@ export class SearchService {
       }
       return false;
     });
-    console.log(products);
     return products;
   };
 

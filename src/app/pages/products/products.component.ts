@@ -15,8 +15,8 @@ export class ProductsComponent {
   filterKeys:any;
   
   constructor(
-    private catalogueService:CatalogueServiceService,
-    private searchService: SearchService,
+    public catalogueService:CatalogueServiceService,
+    public searchService: SearchService,
     public filterService: FilterService
     ) {};
 
@@ -42,11 +42,12 @@ export class ProductsComponent {
     if (!this.searchItem) {
       this.getData();
     }
-    this.catalogue = this.searchService.searchItems(this.searchItem, this.catalogueService.products);
+    // this.catalogue = this.searchService.searchItems(this.searchItem, this.catalogueService.products);
+    this.catalogueService.products = this.searchService.searchItems(this.searchItem, this.catalogueService.products);
   };
 
   applyFilters(){
-    this.catalogue = this.filterService.filterItems(this.catalogueService.products);
-    console.log(this.catalogue);
+    // this.catalogue = this.filterService.filterItems(this.catalogueService.products);
+    this.catalogueService.products = this.filterService.filterItems(this.catalogueService.products);
   };
 }
