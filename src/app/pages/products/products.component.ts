@@ -13,6 +13,7 @@ export class ProductsComponent {
   searchItem:any;
   filterAttributes:any;
   filterKeys:any;
+  sliderValue:any;
   
   constructor(
     public catalogueService:CatalogueServiceService,
@@ -25,6 +26,14 @@ export class ProductsComponent {
   };
 
   isNumber(val:any): boolean { return typeof val === 'number'; }
+
+  min(values: number[]): number {
+      return Math.min(...values);
+  };
+  
+  max(values: number[]): number {
+      return Math.max(...values);
+  };
 
   getData(): void {
     this.catalogueService.fetchData()
@@ -44,12 +53,17 @@ export class ProductsComponent {
     if (!this.searchItem) {
       this.getData();
     }
-    // this.catalogue = this.searchService.searchItems(this.searchItem, this.catalogueService.products);
-    this.catalogueService.products = this.searchService.searchItems(this.searchItem, this.catalogueService.products);
+    this.catalogue = this.searchService.searchItems(this.searchItem, this.catalogueService.products);
   };
 
   applyFilters(){
-    // this.catalogue = this.filterService.filterItems(this.catalogueService.products);
-    this.catalogueService.products = this.filterService.filterItems(this.catalogueService.products);
+    this.catalogue = this.filterService.filterItems(this.catalogueService.products);
   };
+
+  onSliderChange(event:any) {
+    this.sliderValue = parseInt(event.target.value);
+    const key = event.target.name;
+    this.filterService.filterValues[key] = new Set([this.sliderValue]);
+  };
+
 }

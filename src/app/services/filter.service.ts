@@ -44,14 +44,18 @@ export class FilterService {
     event.target.checked
       ? this.filterValues[key].add(event.target.value)
       : this.filterValues[key].delete(event.target.value);
-      console.log(this.filterValues);
   };
 
   filterItems(products:any){
     products = products.filter((p:any)=>{
       for (const key of Object.keys(this.filterValues)) {
         if (this.filterValues[key].size!==0){
-          if(!this.filterValues[key].has(p[key])) return false;
+          if (typeof(p[key])=="number") {
+            if(this.filterValues[key].values().next().value<p[key]) return false;
+          }
+          else{
+            if(!this.filterValues[key].has(p[key])) return false;
+          }
         }
       }
       return true;

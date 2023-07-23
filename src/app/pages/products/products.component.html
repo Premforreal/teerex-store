@@ -5,23 +5,33 @@
     <div>
         <div *ngFor="let key of filterKeys">
             <h2>{{key}}</h2>
-            <div *ngFor="let item of filterAttributes[key]">
-                <div *ngIf="isNumber(item);else elseBlock">
-                    {{ item }} is a number.
+            <div *ngFor="let item of filterAttributes[key]; let i = index">
+                <div *ngIf="isNumber(item);else checkBoxes">
+                    <div *ngIf="i < 1">
+                        {{sliderValue}}
+                        <input  type="range" 
+                        id="price"
+                        name={{key}}
+                        min={{min(filterAttributes[key])}} 
+                        max={{max(filterAttributes[key])}} 
+                        value={{sliderValue}}
+                        (input)="onSliderChange($event)"
+                        class="slider"
+                        >
+                    </div>
                 </div>
-                <ng-template #elseBlock>Content to render when condition is false.</ng-template>
-                <div>
+                <ng-template #checkBoxes>
                     <input type="checkbox" id={{item}} name={{key}} value="{{item}}"
                     (change)="filterService.onCheckboxChange($event)">
                     <label for={{item}}>{{item}}</label>
-                </div>
+                </ng-template>
             </div>
         </div>
         <button (click)="applyFilters()">Apply filters</button>
     </div>
 
     <div class="products">
-        <div *ngFor="let product of catalogueService.products">
+        <div *ngFor="let product of catalogue">
             <app-product [product]="product"
                         (addToCartEvent)="addToCart($event)"
             ></app-product>
