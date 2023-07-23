@@ -10,8 +10,6 @@ import { CartComponent } from './pages/cart/cart.component';
 import { ProductComponent } from './components/product/product.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
-import { SearchItemComponent } from './components/search-item/search-item.component';
-import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +19,6 @@ import { FilterComponent } from './components/filter/filter.component';
     ProductComponent,
     HeaderComponent,
     CartItemComponent,
-    SearchItemComponent,
-    FilterComponent,
   ],
   imports: [
     BrowserModule,
