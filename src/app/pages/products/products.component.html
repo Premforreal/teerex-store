@@ -6,9 +6,15 @@
         <div *ngFor="let key of filterKeys">
             <h2>{{key}}</h2>
             <div *ngFor="let item of filterAttributes[key]">
-                <input type="checkbox" id={{item}} name={{key}} value="{{item}}"
-                (change)="filterService.onCheckboxChange($event)">
-                <label for={{item}}>{{item}}</label>
+                <div *ngIf="isNumber(item);else elseBlock">
+                    {{ item }} is a number.
+                </div>
+                <ng-template #elseBlock>Content to render when condition is false.</ng-template>
+                <div>
+                    <input type="checkbox" id={{item}} name={{key}} value="{{item}}"
+                    (change)="filterService.onCheckboxChange($event)">
+                    <label for={{item}}>{{item}}</label>
+                </div>
             </div>
         </div>
         <button (click)="applyFilters()">Apply filters</button>

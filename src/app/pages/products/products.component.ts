@@ -24,6 +24,8 @@ export class ProductsComponent {
     this.getData();
   };
 
+  isNumber(val:any): boolean { return typeof val === 'number'; }
+
   getData(): void {
     this.catalogueService.fetchData()
     .subscribe((response: any)=>{
