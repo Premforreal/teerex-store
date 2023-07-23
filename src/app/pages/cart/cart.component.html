@@ -1,5 +1,5 @@
 <h3>Shopping cart</h3>
-<div *ngFor="let d of data">
+<div *ngFor="let d of catalogueService.cartItems">
     <app-cart-item [product]="d">
     </app-cart-item>
 </div>

@@ -9,18 +9,18 @@ import { CatalogueServiceService } from '../../services/catalogue-service.servic
 export class CartItemComponent {
   @Input() product:any;
 
-  constructor(private service:CatalogueServiceService) {};
+  constructor(private catalogueService:CatalogueServiceService) {};
 
   removeFromCart(id:number){
-    this.service.removeFromCart(id);
+    this.catalogueService.removeFromCart(id);
   };
   removeOneItem(id:number){
     if(this.product.quantity==1){
-      this.service.removeFromCart(id);
+      this.catalogueService.removeFromCart(id);
     }
-    this.service.removeOneItem(id);
+    this.catalogueService.removeOneItem(id);
   };
   addOneItem(id:number){
-    this.service.addOneItem(id);
+    this.catalogueService.addOneItem(id);
   };
 }

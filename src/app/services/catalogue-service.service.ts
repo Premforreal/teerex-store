@@ -21,13 +21,8 @@ export class CatalogueServiceService {
     );
   };
 
-  getCartItems(){
-    return this.cartItems;
-  };
-
   addItemsCart(id: number) {
     const cartItem = this.products.find((p: any) => p.id === id && p.quantity > 0);
-  
     if (cartItem) {
       const existingItem = this.cartItems.find((item: any) => item.id === id);
       if (existingItem && existingItem.quantity < cartItem.quantity) {
@@ -42,7 +37,7 @@ export class CatalogueServiceService {
       }
     } 
     else {
-      console.error('Invalid item');
+      console.error('Item is not available!');
     }
   };
 
@@ -79,15 +74,12 @@ export class CatalogueServiceService {
   };
 
   searchItems(searchItem:string){
-    console.log(searchItem);
-    console.log(this.products);
     this.filteredData = this.products.filter((item:any)=>{
       if (item.id==parseInt(searchItem)) {
         return true;
       }
       return false;
     });
-    console.log(this.filteredData);
   };
 
 }

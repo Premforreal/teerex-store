@@ -7,10 +7,5 @@ import { CatalogueServiceService } from '../../services/catalogue-service.servic
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
-  constructor(private service:CatalogueServiceService) {};
-  data:any;
-
-  ngOnInit() {
-    this.data = this.service.getCartItems();
-  };
+  constructor(public catalogueService:CatalogueServiceService) {};
 }
