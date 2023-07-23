@@ -36,12 +36,6 @@ export class FilterService {
       this.filterAttributes.price.add(p.price);
       this.filterAttributes.type.add(p.type);
     });
-    // this.filterAttributes = {
-    //   gender: [...this.gender],
-    //   color: [...this.color],
-    //   price: [...this.price],
-    //   type: [...this.type]
-    // };
     return this.filterAttributes;
   };
 
@@ -51,6 +45,27 @@ export class FilterService {
       ? this.filterValues[key].add(event.target.value)
       : this.filterValues[key].delete(event.target.value);
       console.log(this.filterValues);
+  };
+
+  filterItems(products:any){
+    products = products.filter((p:any)=>{
+      for (const key of Object.keys(this.filterValues)) {
+        if (this.filterValues[key].size!==0){
+          if(!this.filterValues[key].has(p[key])) return false;
+        }
+      }
+      return true;
+    });
+    return products;
+  };
+
+  clearFilters(){
+    this.filterValues = {
+                          gender : new Set<string>(), 
+                          color : new Set<string>(),
+                          price: new Set<number>(),
+                          type: new Set<string>()
+                        }
   };
 
 }

@@ -46,7 +46,7 @@ export class ProductsComponent {
   };
 
   applyFilters(){
-    console.log(this.filterService.filterValues);
-    console.log(this.filterService.filterAttributes);
+    this.catalogue = this.filterService.filterItems(this.catalogueService.products);
+    console.log(this.catalogue);
   };
 }
