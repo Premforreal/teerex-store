@@ -1,12 +1,17 @@
-<div class="">
-    <!-- <p>{{product.id}}</p> -->
-    <!-- <p>{{product.color}}</p>
-    <p>{{product.gender}}</p> -->
+<div class="card shadow m-1 p-1">
+    <!-- 
+    <p>{{product.id}}</p>
+    <p>{{product.color}}</p>
+    <p>{{product.gender}}</p>
+    <p>{{product.quantity}}</p>
+    <p>{{product.type}}</p> 
+    -->
     <h5>{{product.name}}</h5>
-    <!-- <img src={{product.imageURL}} alt="image"> -->
+    <img src={{product.imageURL}} alt="image">
     <p>{{product.currency}} {{product.price}}</p>
-    <!-- <p>{{product.quantity}}</p>
-    <p>{{product.type}}</p> -->
-    <button (click)="addToCart()">Add to cart
+    <button (click)="addToCart()"
+        class="btn btn-outline-secondary"
+    >
+        Add to cart
     </button>
 </div>

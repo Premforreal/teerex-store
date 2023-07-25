@@ -52,10 +52,15 @@
                 <i class="bi bi-search fs-4"></i>
             </button>
         </div>
-        <div *ngFor="let product of catalogue">
-            <app-product [product]="product"
+        <div class="container">
+            <div class="row">
+                <div *ngFor="let product of catalogue" class="col-lg-4">
+                    <app-product
+                        [product]="product"
                         (addToCartEvent)="addToCart($event)"
-            ></app-product>
+                    ></app-product>
+                </div>
+            </div>
         </div>
     </div>
 </div>
