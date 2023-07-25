@@ -13,7 +13,7 @@ export class ProductsComponent {
   searchItem:any;
   filterAttributes:any;
   filterKeys:any;
-  sliderValue:any;
+  sliderValue:any=0;
   
   constructor(
     public catalogueService:CatalogueServiceService,
@@ -27,10 +27,6 @@ export class ProductsComponent {
 
   isNumber(val:any): boolean { return typeof val === 'number'; }
 
-  min(values: number[]): number {
-      return Math.min(...values);
-  };
-  
   max(values: number[]): number {
       return Math.max(...values);
   };

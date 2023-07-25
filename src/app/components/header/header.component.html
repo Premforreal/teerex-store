@@ -1,4 +1,15 @@
-<h1 (click)="navigateToHome()">Teerex Store</h1>
-<button (click)="navigateToCart()"
->Cart icon
-</button>
+<div class="card d-flex flex-row justify-content-between">
+    <button 
+        (click)="navigateToHome()"
+        class="btn"
+    >
+        <h1>Teerex Store</h1>
+    </button>
+    <button (click)="navigateToCart()"
+            class="btn btn-dark"
+    >
+        <i (click)="navigateToCart()"  
+            class="bi bi-cart-fill fs-4"
+        ></i>
+    </button>
+</div>
