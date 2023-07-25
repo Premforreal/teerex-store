@@ -1,4 +1,4 @@
-<div class="card shadow m-1 p-1">
+<div class="card shadow border-dark-subtle bg-body-secondary m-1 p-1">
     <!-- 
     <p>{{product.id}}</p>
     <p>{{product.color}}</p>
@@ -6,12 +6,14 @@
     <p>{{product.quantity}}</p>
     <p>{{product.type}}</p> 
     -->
-    <h5>{{product.name}}</h5>
-    <img src={{product.imageURL}} alt="image">
-    <p>{{product.currency}} {{product.price}}</p>
-    <button (click)="addToCart()"
-        class="btn btn-outline-secondary"
-    >
+    <h5 class="text-center">{{product.name}}</h5>
+    <img src={{product.imageURL}} alt="image" class="img-fluid img-thumbnail border-dark-subtle">
+    <div class="d-flex flex-row align-items-center justify-content-around">
+        <p class="m-0"><strong>{{product.currency}} {{product.price}}</strong></p>
+        <button (click)="addToCart()"
+        class="btn btn-dark"
+        >
         Add to cart
-    </button>
+        </button>
+    </div>
 </div>

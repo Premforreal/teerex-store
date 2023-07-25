@@ -1,16 +1,16 @@
-<div class="container d-flex flex-row justify-content-around">
-    <div class="card shadow">
+<div class="container p-0 m-0 d-flex flex-row justify-content-around">
+    <div class="card border-dark-subtle shadow col-3 p-2">
         <div *ngFor="let key of filterKeys">
-            <h5>{{key}}</h5>
+            <h4>{{key}}</h4>
             <div *ngFor="let item of filterAttributes[key]; let i = index">
                 <div *ngIf="isNumber(item);else checkBoxes">
                     <div *ngIf="i < 1">
                         <label for="price" 
                             class="form-label"
                         >
-                            {{sliderValue}}
+                            <strong>{{sliderValue}}</strong>
                         </label>
-                        <input  
+                        <input
                             type="range" 
                             id="price"
                             name={{key}}
@@ -23,13 +23,13 @@
                     </div>
                 </div>
                 <ng-template #checkBoxes>
-                    <div class="form-check">
+                    <div class="form-check ml-5 col-6">
                         <input type="checkbox" id={{item}} name={{key}} value="{{item}}"
                         (change)="filterService.onCheckboxChange($event)"
                         class="form-check-input">
                         <label for={{item}} 
                             class="form-check-label">
-                            {{item}}
+                            <strong>{{item}}</strong>
                         </label>
                     </div>
                 </ng-template>
@@ -37,7 +37,7 @@
         </div>
         <button 
             (click)="applyFilters()"
-            class="btn btn-outline-secondary"
+            class="btn btn-dark"
         >
             Apply filters
         </button>
