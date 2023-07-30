@@ -1,6 +1,6 @@
 <h2>Shopping cart</h2>
-<div class="cart-container">
-    <div>
+<div class="d-flex flex-row">
+    <div class="col-6">
         <div *ngIf="catalogueService.cartItems.length>0; else cartEmpty">
             <div *ngFor="let d of catalogueService.cartItems">
                 <app-cart-item [product]="d">
@@ -11,5 +11,5 @@
             Your cart is empty.
         </ng-template>
     </div>
-    <h3>Total Amount : {{catalogueService.cartTotal}}</h3>
+    <h3 class="col-6 text-center">Total Amount : {{catalogueService.cartTotal}}</h3>
 </div>

@@ -1,6 +1,7 @@
 <div class="container p-0 m-0 d-flex flex-row justify-content-around">
-    <div class="card border-dark-subtle shadow col-3 p-2">
+    <div class="card border-dark-subtle shadow col-3 p-2 bg-body-secondary">
         <div *ngFor="let key of filterKeys">
+            <hr>
             <h4>{{key}}</h4>
             <div *ngFor="let item of filterAttributes[key]; let i = index">
                 <div *ngIf="isNumber(item);else checkBoxes">
