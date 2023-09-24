@@ -1,48 +1,47 @@
-<div class="container p-0 m-0 d-flex flex-row justify-content-around">
-    <div class="card border-dark-subtle shadow col-3 p-2 bg-body-secondary">
-        <div *ngFor="let key of filterKeys">
-            <hr>
-            <h4>{{key}}</h4>
-            <div *ngFor="let item of filterAttributes[key]; let i = index">
-                <div *ngIf="isNumber(item);else checkBoxes">
-                    <div *ngIf="i < 1">
-                        <label for="price" 
-                            class="form-label"
-                        >
-                            <strong>{{sliderValue}}</strong>
-                        </label>
-                        <input
-                            type="range" 
-                            id="price"
-                            name={{key}}
-                            min=0
-                            max={{max(filterAttributes[key])}} 
-                            value={{sliderValue}}
-                            (input)="onSliderChange($event)"
-                            class="form-range"
-                        >
-                    </div>
+<div class="card sticky-top border-dark-subtle shadow col-2 p-1 bg-body-secondary">
+    <div *ngFor="let key of filterKeys">
+        <h4>{{key}}</h4>
+        <div *ngFor="let item of filterAttributes[key]; let i = index">
+            <div *ngIf="isNumber(item);else checkBoxes">
+                <div *ngIf="i < 1">
+                    <label for="price" 
+                        class="form-label"
+                    >
+                        <strong>{{sliderValue}}</strong>
+                    </label>
+                    <input
+                        type="range" 
+                        id="price"
+                        name={{key}}
+                        min=0
+                        max={{max(filterAttributes[key])}} 
+                        value={{sliderValue}}
+                        (input)="onSliderChange($event)"
+                        class="form-range"
+                    >
                 </div>
-                <ng-template #checkBoxes>
-                    <div class="form-check ml-5 col-6">
-                        <input type="checkbox" id={{item}} name={{key}} value="{{item}}"
-                        (change)="filterService.onCheckboxChange($event)"
-                        class="form-check-input">
-                        <label for={{item}} 
-                            class="form-check-label">
-                            <strong>{{item}}</strong>
-                        </label>
-                    </div>
-                </ng-template>
             </div>
+            <ng-template #checkBoxes>
+                <div class="form-check ml-5 col-6">
+                    <input type="checkbox" id={{item}} name={{key}} value="{{item}}"
+                    (change)="filterService.onCheckboxChange($event)"
+                    class="form-check-input">
+                    <label for={{item}} 
+                        class="form-check-label">
+                        <strong>{{item}}</strong>
+                    </label>
+                </div>
+            </ng-template>
         </div>
-        <button 
-            (click)="applyFilters()"
-            class="btn btn-dark"
-        >
-            Apply filters
-        </button>
     </div>
+    <button 
+        (click)="applyFilters()"
+        class="btn btn-dark"
+    >
+        Apply filters
+    </button>
+</div>
+<div class="container p-0 m-0 d-flex flex-row justify-content-around">
     <div class="d-flex flex-column">
         <div class="input-group my-1">
             <input [(ngModel)]="searchItem" placeholder="search"
